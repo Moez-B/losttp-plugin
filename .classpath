@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/user/Desktop/Java Dependencies/craftbukkit-1.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Moez/Desktop/java dependencies/minecraft dependencies/spigot-1.15.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

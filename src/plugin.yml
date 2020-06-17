@@ -6,3 +6,5 @@ description: tps to nearest player if lost
 commands:
   lost:
     description: tps the player to the next nearest players
+  home:
+    description: tps the player back to the home base
