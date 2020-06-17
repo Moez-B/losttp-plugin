@@ -1,5 +1,13 @@
 package mod;
 
-public class Plugin {
+import org.bukkit.plugin.java.JavaPlugin;
 
+import mod.commands.LostCommand;
+
+public class Plugin extends JavaPlugin {
+	
+	@Override
+	public void onEnable() {
+		this.getCommand("lost").setExecutor(new LostCommand(this));
+	}
 }

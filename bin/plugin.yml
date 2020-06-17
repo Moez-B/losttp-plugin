@@ -1,0 +1,8 @@
+name: losttp
+version: 1.0
+main: mod.Plugin
+description: tps to nearest player if lost
+
+commands:
+  lost:
+    description: tps the player to the next nearest players
