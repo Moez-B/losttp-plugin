@@ -19,7 +19,7 @@ public class HomeCommand implements CommandExecutor {
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-		((Player)sender).teleport(new Location(Bukkit.getWorld("world"),77.621,30.0,-28.485));
+		((Player)sender).teleport(new Location(Bukkit.getWorld("world"), 77.621 ,30.0, -28.485));
 		this.plugin.getServer().broadcastMessage(ChatColor.RED + ((Player)sender).getName().toString() + " has been teleported back to da ferda house!");
 		return false;
 	}

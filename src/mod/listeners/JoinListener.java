@@ -12,7 +12,7 @@ public class JoinListener implements Listener {
 	
 	private Plugin plugin;
 	
-	public JoinListener(Plugin plugiun) {
+	public JoinListener(Plugin plugin) {
 		this.plugin = plugin;
 		Bukkit.getPluginManager().registerEvents(this, plugin);
 	}
