@@ -21,6 +21,8 @@ public class JoinListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) { 
 		String name = event.getPlayer().getName().toString();
 		event.setJoinMessage(ChatColor.RED + name + ChatColor.WHITE + " has joined da server da neatway!");
+		
+		this.plugin.positions.addPlayer(event.getPlayer());
 	}
 
 }
