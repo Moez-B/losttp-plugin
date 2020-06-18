@@ -1,10 +1,13 @@
 package mod.commands;
 
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import mod.Plugin;
+import net.md_5.bungee.api.ChatColor;
 
 public class BackCommand implements CommandExecutor {
 	
@@ -16,6 +19,16 @@ private Plugin plugin;
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
+		Location tpLocation = this.plugin.positions.getTpLocation((Player)sender);
+		if(tpLocation != null) {
+			((Player)sender).teleport(tpLocation);
+			this.plugin.getServer().broadcastMessage(ChatColor.RED + sender.getName() + ChatColor.WHITE + " un-did their tp!");
+			return true;
+		}
+		else {
+			this.plugin.getServer().broadcastMessage(ChatColor.RED + sender.getName() + ChatColor.WHITE + " has no tp history!");
+		}
+		
 		return false;
 	}
 

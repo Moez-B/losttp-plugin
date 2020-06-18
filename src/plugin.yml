@@ -8,3 +8,7 @@ commands:
     description: tps the player to the next nearest players
   home:
     description: tps the player back to the home base
+  back:
+    description: tps player to their last tp location
+  died:
+    description: tps player to their death location

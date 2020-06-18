@@ -18,7 +18,7 @@ public class LeaveListener implements Listener {
 	@EventHandler
 	public void onLeave(PlayerQuitEvent event) {
 		String name = event.getPlayer().getName().toString();
-		event.setQuitMessage(ChatColor.RED + name + ChatColor.WHITE + " has left da server da neatway!");
+		event.setQuitMessage(ChatColor.RED + name + ChatColor.WHITE + " has left da server da leftway!");
 		
 		this.plugin.positions.removePlayer(event.getPlayer());
 	}
