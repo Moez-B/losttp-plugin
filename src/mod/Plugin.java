@@ -1,6 +1,5 @@
 package mod;
 
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import mod.commands.BackCommand;
@@ -25,16 +24,16 @@ public class Plugin extends JavaPlugin {
 		new LeaveListener(this);
 		new TeleportListener(this);
 		new DeathListener(this);
+		
 		this.getCommand("lost").setExecutor(new LostCommand(this));
 		this.getCommand("home").setExecutor(new HomeCommand(this));
 		this.getCommand("back").setExecutor(new BackCommand(this));
 		this.getCommand("died").setExecutor(new DiedCommand(this));
-		this.positions = new Positions((Player[])this.getServer().getOnlinePlayers().toArray());
+
+		this.positions = new Positions(this.getServer().getOnlinePlayers());
 	}
 	
 	@Override
-	public void onDisable() {
-		
-	}
+	public void onDisable() {}
 	
 }

@@ -1,7 +1,9 @@
 package mod.commands.position;
 
+import java.util.Collection;
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -10,10 +12,12 @@ public class Positions {
 	private HashMap<String, Location> dead = new HashMap<String, Location>();
 	private HashMap<String, Location> tp = new HashMap<String, Location>();
 	
-	public Positions(Player[] players) {
+	public Location def = new Location(Bukkit.getWorld("world"),0,0,0);
+	
+	public Positions(Collection<? extends Player> players) {
 		for(Player player : players) {
-			this.dead.put(player.getName().toLowerCase(), null);
-			this.tp.put(player.getName().toLowerCase(), null);
+			this.dead.put(player.getName().toLowerCase(), this.def);
+			this.tp.put(player.getName().toLowerCase(), this.def);
 		}
 	}
 	
@@ -23,8 +27,8 @@ public class Positions {
 	}
 	
 	public void addPlayer(Player player) {
-		this.dead.put(player.getName().toLowerCase(), null);
-		this.tp.put(player.getName().toLowerCase(), null);
+		this.dead.put(player.getName().toLowerCase(), this.def);
+		this.tp.put(player.getName().toLowerCase(), this.def);
 	}
 	
 	public void updatePlayerTpLocation(Player player, Location location) {
