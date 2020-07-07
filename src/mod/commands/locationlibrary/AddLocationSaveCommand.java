@@ -17,31 +17,33 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import mod.Plugin;
 
 public class AddLocationSaveCommand implements CommandExecutor {
 	
 	Plugin plugin;
-	File locationSaves;
 	
 	public AddLocationSaveCommand(Plugin p) {
 		this.plugin = p;
-		this.locationSaves = new File("global-location-saves-losttp.json");
 	}
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
 		
 		JSONArray locations;
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
 		try {
-			locations = (JSONArray)this.plugin.parser.parse(new FileReader(this.locationSaves));
+			locations = (JSONArray)this.plugin.parser.parse(new FileReader(this.plugin.locationSaves));
 			Location cl = ((Player)sender).getLocation();
-			locations.add((JSONObject)this.plugin.parser.parse(new Gson().toJson(
-					new NamedLocation(args[0], cl.getWorld(), cl.getX(), cl.getY(), cl.getZ())
-					)));
-			FileWriter addLocation = new FileWriter(this.locationSaves);
-			addLocation.write(locations.toJSONString());
+			
+			JSONObject namedLocation = (JSONObject)this.plugin.parser.parse(gson.toJson(new NamedLocation(args[0], cl.getWorld(), cl.getX(), cl.getY(), cl.getZ())));		
+			locations.add(namedLocation);
+			FileWriter addLocation = new FileWriter(this.plugin.locationSaves);
+			
+			addLocation.write(locations.toString());
 			addLocation.flush();
 			addLocation.close();
 		}
@@ -50,6 +52,7 @@ public class AddLocationSaveCommand implements CommandExecutor {
 		
 		Bukkit.getServer().broadcastMessage(
 				ChatColor.RED + sender.getName() + ChatColor.WHITE + " just registered a location named " + ChatColor.RED + args[0]
+				+ ChatColor.WHITE + "!"
 		);
 		return true;
 	}

@@ -16,3 +16,5 @@ commands:
     description: tps player to their death location
   addlocation:
     description: adds location to saved locations json
+  goto:
+    description: takes sender to the location of a saved location
