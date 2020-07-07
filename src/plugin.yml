@@ -1,5 +1,5 @@
 name: losttp
-version: 1.0
+version: 1.1
 main: mod.Plugin
 description: tps to nearest player if lost
 
@@ -8,7 +8,11 @@ commands:
     description: tps the player to the next nearest players
   home:
     description: tps the player back to the home base
+  bh:
+    description: tps the player back to the beach house
   back:
     description: tps player to their last tp location
   died:
     description: tps player to their death location
+  addlocation:
+    description: adds location to saved locations json
